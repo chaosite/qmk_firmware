@@ -277,26 +277,26 @@ bool process_record_kb(uint16_t keycode, keyrecord_t *record)
 		case FN_MO13:
 			if (record->event.pressed)
 			{
-				layer_on(1);
-				update_tri_layer(1, 2, 3);
+				layer_on(TRI_LAYER_A);
+				update_tri_layer(TRI_LAYER_A, TRI_LAYER_B, TRI_LAYER_C);
 			}
 			else
 			{
-				layer_off(1);
-				update_tri_layer(1, 2, 3);
+				layer_off(TRI_LAYER_A);
+				update_tri_layer(TRI_LAYER_A, TRI_LAYER_B, TRI_LAYER_C);
 			}
 			return false;
 			break;
 		case FN_MO23:
 			if (record->event.pressed)
 			{
-				layer_on(2);
-				update_tri_layer(1, 2, 3);
+				layer_on(TRI_LAYER_B);
+				update_tri_layer(TRI_LAYER_A, TRI_LAYER_B, TRI_LAYER_C);
 			}
 			else
 			{
-				layer_off(2);
-				update_tri_layer(1, 2, 3);
+				layer_off(TRI_LAYER_B);
+				update_tri_layer(TRI_LAYER_A, TRI_LAYER_B, TRI_LAYER_C);
 			}
 			return false;
 			break;
@@ -362,13 +362,13 @@ void action_function(keyrecord_t *record, uint8_t id, uint8_t opt)
 	case TRIPLE_TAP_2_3:
 		if (record->event.pressed)
 		{
-			layer_on( id == TRIPLE_TAP_1_3 ? 1 : 2 );
+			layer_on( id == TRIPLE_TAP_1_3 ? TRI_LAYER_A : TRI_LAYER_B );
 
 			if (record->tap.count && !record->tap.interrupted)
 			{
 				if (record->tap.count >= 3)
 				{
-					layer_invert(3);
+					layer_invert(TRI_LAYER_C);
 				}
 			}
 			else
@@ -378,7 +378,7 @@ void action_function(keyrecord_t *record, uint8_t id, uint8_t opt)
 		}
 		else
 		{
-			layer_off( id == TRIPLE_TAP_1_3 ? 1 : 2 );
+			layer_off( id == TRIPLE_TAP_1_3 ? TRI_LAYER_A : TRI_LAYER_B );
 		}
 		break;
 	}
