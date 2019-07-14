@@ -213,7 +213,7 @@ bool process_record_kb(uint16_t keycode, keyrecord_t *record)
 {
 #if RGB_BACKLIGHT_ENABLED
 	process_record_backlight(keycode, record);
-#endif // BACKLIGHT_ENABLED
+#endif // RGB_BACKLIGHT_ENABLED
 
 	switch(keycode) {
 		case FN_MO13:
